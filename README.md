@@ -9,3 +9,14 @@ Subject Name strategy :
     In order to extract the exact schema that we need, subject name strategy is achaieving that by categorising the schemas on the topic that they belong to   
     User Tracking Topic --> {topic-name}-key: user-tacking-key 
                             {topic-name}-value:user-tacking-key
+                            
+                            
+
+
+Content Type :
+preferred format for content types is application/vnd.schemaregistry.v1+json, where v1 is the API version and json is the serialization format.
+
+
+
+References:
+https://docs.confluent.io/current/schema-registry/develop/api.html
