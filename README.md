@@ -1,20 +1,23 @@
 # Schema-Registry
 
-apache avro depends on the schema to define record types and records
-schemas can be strored on centralised location such as schema registry. 
+apache avro depends on the schema to define record types and records.
+schemas can be stored on centralised location such as schema registry. 
 
-Schema registry i san application that handles the distributuin of  schemas to producer and consumers and storing them for long term availability.
+Schema registry is an application that handles the distribution of schemas to producer and consumers and storing them for long term availability.
 
 Subject Name strategy :
-    In order to extract the exact schema that we need, subject name strategy is achaieving that by categorising the schemas on the topic that they belong to   
+    In order to extract the exact schema that we need, subject name strategy is achaieving that by categorising the schemas       on the topic that they belong to   
     User Tracking Topic --> {topic-name}-key: user-tacking-key 
-                            {topic-name}-value:user-tacking-key
+                            {topic-name}-value: user-tacking-key
                             
-                            
-
+                          
 
 Content Type :
 preferred format for content types is application/vnd.schemaregistry.v1+json, where v1 is the API version and json is the serialization format.
+
+
+* Kafka Producer creates avro record. Which has schemaId and data. With Kafka avro serializer schema is registered if needed and then serializes data and schemaId.
+Kafka avro serialzer keeps cache of registered schemas from the schema registery & chema Id 
 
 ## Using Confluent
 1) curl -O http://packages.confluent.io/archive/5.3/confluent-5.3.0-2.12.zip
@@ -82,3 +85,4 @@ preferred format for content types is application/vnd.schemaregistry.v1+json, wh
 References:
 https://docs.confluent.io/current/schema-registry/develop/api.html
 https://docs.confluent.io/current/schema-registry/using.html
+https://dzone.com/articles/kafka-avro-serialization-and-the-schema-registry
