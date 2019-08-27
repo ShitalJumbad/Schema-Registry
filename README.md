@@ -79,7 +79,7 @@ Kafka avro serialzer keeps cache of registered schemas from the schema registery
 
 
 
-*** To disable comaptibity in order to register new schema
+*** To disable comaptibity in order to register new schema (to avoid Schema being registered is incompatible with an earlier schema)
 
 curl -X PUT -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"compatibility": "NONE"}' http://localhost:8085/config
 
