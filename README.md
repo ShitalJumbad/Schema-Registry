@@ -77,7 +77,13 @@ Kafka avro serialzer keeps cache of registered schemas from the schema registery
 18) Deleting the Most Recently Registered Schema Under Subject "Kafka-value"
     curl -X DELETE http://localhost:8085/subjects/Kafka-value/versions/latest
 
-    
+
+
+*** To disable comaptibity in order to register new schema
+
+curl -X PUT -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"compatibility": "NONE"}' http://localhost:8085/config
+
+https://docs.confluent.io/current/schema-registry/avro.html
 
 
 
