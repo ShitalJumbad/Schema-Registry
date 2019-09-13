@@ -1,0 +1,60 @@
+##JSON Marshal and Unmarshal
+
+The marshal and Unmarshal method returned in Bytes format, but we can change these data to strings/JSON in Go.
+
+'encoding/json' package for json related operation in golang.
+Marshal use to convert Go object into JSON and Unmarshal is vice versa
+
+##1) Marshalling (struct data into json)
+
+json.Marshal() method converts Struct into Byte data
+ip :- object as a param 
+op :- Bytes code
+
+type Employee struct {
+    Name string
+    Age int
+    salary int
+}
+
+1 emp_obj := Employee{Name:"Rachel", Age:24, Salary :344444}
+2 emp, _ := json.Marshal(emp_obj)
+3 fmt.Println(string(emp))
+
+Line 1: Creating object using Employee Struct.
+Line 2: Convert Struct Object into Byte data.
+Line 3: Convert Byte data into json string to display data.
+
+The Output :
+{"Name":"Rachel","Age":24,"Salary":344444}
+
+##2) Unmarshalling (json(Byte data) into Struct Object)
+
+ip:- json byte data as a param 
+op:- struct object
+
+The string keys in the JSON are matched to the field names in the structs.
+
+e.g. 
+type Response struct {
+    Name string `json:"name"`
+    Age int `json:"age"`
+    Salary int `json:"salary"`
+}
+
+
+1 bytes := []byte(str_emp)
+2 var res Response
+3 json.Unmarshal(bytes, &res)
+4 fmt.Println(res.Name)
+
+Line 1: Creating json string into byte code.
+Line 2: Create empty Response struct and assign res variable.
+Line 3: Unmarshal by passing a pointer to an empty structs.
+Line 3: Print the Struct Name value.
+
+Reference : - https://www.restapiexample.com/golang-tutorial/marshal-and-unmarshal-of-struct-data-using-golang/
+
+
+
+
