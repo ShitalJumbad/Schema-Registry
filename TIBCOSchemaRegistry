@@ -1,0 +1,11 @@
+##TIBCO Server
+
+1)  FTL Realm Server
+  /opt/tibco/ftl/5.4/bin
+  sudo ./tibrealmserver -ht 10.97.247.33:8080
+  
+  
+  
+2)  TIBCO Schema Registry Server
+    /opt/tibco/akd/repo/1.0/bin
+    sudo ./tibschemad -ftl http://10.97.247.33:8080
