@@ -40,41 +40,53 @@ Kafka avro serialzer keeps cache of registered schemas from the schema registery
     op expected :- []
     
 8) to define a schema for a new subject
-    curl -X POST -v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://localhost:8085/subjects/test-value/versions
+
+    curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://localhost:8081/subjects/test-value/versions
     
     I got id :- {"id":41}
     
 9) schema id, you can also retrieve the associated schema by querying Schema Registry REST endpoint as follows
+
     curl --silent -X GET http://localhost:8085/schemas/ids/41 | jq .
 
 10) To view the latest schema for this subject in more detail:
+
     curl --silent -X GET http://localhost:8085/subjects/test-value/versions/latest | jq .
     
 11) Registering a New Version of a Schema Under the Subject "Kafka-key"
+
     curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\": \"string\"}"}' http://localhost:8085/sufka-key/versions
 
 12) Registering a New Version of a Schema Under the Subject "Kafka-value"
+
     curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\": \"string\"}"}' http://localhost:8085/subjects/Kafka-value/versions
 
 12) Listing all the subjects
+
     curl -X GET http://localhost:8085/subjects
     
 13) Registering an Existing Schema to a New Subject Name
+
     curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data "{\"schema\": $(curl -s http://localhost:8085/subjects/Kafka-vaons/latest | jq '.schema')}" http://localhost:8085/subjects/Kafka2-value/versions
     
 14) Fetching schema by globally unique id 
+
     curl -X GET http://localhost:8085/schemas/ids/1
     
 15) Listing All Schema Versions Registered Under the Subject "Kafka-value"
+
     curl -X GET http://localhost:8085/subjects/Kafka-value/versions
     
 16) Fetch Version 1 of the Schema Registered Under Subject "Kafka-value" 
+
     curl -X GET http://localhost:8085/subjects/Kafka-value/versions/1
     
 17) Deleting Version 1 of the Schema Registered Under Subject "Kafka-value"
+
     curl -X DELETE http://localhost:8085/subjects/Kafka-value/versions/1
     
 18) Deleting the Most Recently Registered Schema Under Subject "Kafka-value"
+
     curl -X DELETE http://localhost:8085/subjects/Kafka-value/versions/latest
 
 
