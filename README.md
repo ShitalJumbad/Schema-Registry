@@ -43,6 +43,7 @@ Kafka avro serialzer keeps cache of registered schemas from the schema registery
 
     curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "{\"type\":\"record\",\"name\":\"Payment\",\"namespace\":\"io.confluent.examples.clients.basicavro\",\"fields\":[{\"name\":\"id\",\"type\":\"string\"},{\"name\":\"amount\",\"type\":\"double\"}]}"}' http://localhost:8085/subjects/test-value/versions
     
+    
     I got id :- {"id":41}
     
 9) schema id, you can also retrieve the associated schema by querying Schema Registry REST endpoint as follows
